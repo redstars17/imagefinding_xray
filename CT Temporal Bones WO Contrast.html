@@ -1,0 +1,129 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta content="base ct temporal bones" name="dcterms.title">
+        <meta content="3aea9a7a-99ce-4495-adc9-8194af3f73b2" name="dcterms.identifier">
+        <meta content="en" name="dcterms.language">
+        <meta content="2019-01-31" name="dcterms.date">
+        <meta content="Nuance System" name="dcterms.creator">
+        <title>base ct temporal bones</title>
+    </head>
+    <body>
+        <section data-section-name="FINDINGS:">
+            <header class="Level1">FINDINGS:</header>
+            <p>
+                <label>External Auditory Canal: </label>
+                <select name="eac">
+                    <option name="" value="">Patent.</option>
+                    <option name="" value="">Opacified.</option>
+                </select>
+            </p>
+            <p>
+                <label>Tympanic Membrane: </label>
+                <select name="tm">
+                    <option name="" value="">Intact.</option>
+                    <option name="" value="">Retracted.</option>
+                    <option name="" value="">Perforated.</option>
+                    <option name="" value="">Myringotomy tube in place.</option>
+                </select>
+            </p>
+
+            <p>
+                <label>Mastoid Air Cells: </label>
+                <select name="mastoids">
+                    <option name="" value="">Well-formed</option>
+                    <option name="" value="">Underdeveloped</option>
+                </select>
+            </p>
+            <p>
+                <label>Middle Ear Cavity: </label>
+                <select name="middle ear opacified?">
+                    <option name="" value="">No</option>
+                    <option name="" value="">Incomplete</option>
+                    <option name="" value="">Complete</option>
+                </select>
+            </p>
+            <p>
+                <label> opacification within the </label>
+                <input type="text" name="middle ear" value="epitympanum, mesotympanum, or hypotympanum.">
+            </p>
+
+            <p>
+                <label>Ossicles: </label>
+                <input type="text" name="ossicles" value="Normal alignment. No erosions.">
+            </p>
+            <p>
+                <label>Labyrinthine Structures: </label>
+                <input type="text" name="labyrinthine" value="Cochlea, vestibule, and semicircular canals have normal morphology. The oval window and round window are patent. The cochlear aperture is patent. No semicircular canal dehiscence.">
+            </p>
+            <p>
+                <label>Otic Capsule: </label>
+                <select name="otic capsule">
+                    <option name="" value="">Normal mineralization.</option>
+                    <option name="" value="">Otosclerosis.</option>
+                </select>
+            </p>
+            <p>
+                <label>Vestibular Aqueduct: </label>
+                <select name="vestibular aqueduct">
+                    <option name="" value="">Normal size.</option>
+                    <option name="" value="">Enlarged.</option>
+                </select>
+            </p>
+            <p>
+                <label>Facial Nerve: </label>
+                <input type="text" name="facial nerve" value="The fallopian canal has normal course and appearance.">
+            </p>
+            <p>
+                <label>Internal Auditory Canal: </label>
+                <select name="iac">
+                    <option name="" value="">Normal size.</option>
+                    <option name="" value="">Enlarged.</option>
+                </select>
+            </p>
+            <p>
+                <label>Vascular: </label>
+                <input type="text" name="vascular" value="The sigmoid plate is intact. The petrous carotid canal has a normal course.">
+            </p>
+        </section>
+        <button onclick="Submit()">Submit</button>
+        <script src='redstars.js'></script>
+  <script src='redstarsset.js'></script>
+  <script>
+    
+    function Submit(){
+    redstars.component[1].valueString=document.getElementsByName("External Auditory Canal")[0].value;
+    redstars.component[2].valueString=document.getElementsByName("Tympanic Membrane")[0].value;
+    redstars.component[3].valueString=document.getElementsByName("Mastoid Air Cells")[0].value;
+    redstars.component[4].valueString=document.getElementsByName("Middle Ear Cavity")[0].value;
+    redstars.component[5].valueString=document.getElementsByName("opacification within the")[0].value;
+    redstars.component[6].valueString=document.getElementsByName("Ossicles")[0].value;
+    redstars.component[7].valueString=document.getElementsByName("Labyrinthine Structures")[0].value;
+    redstars.component[8].valueString=document.getElementsByName("Otic Capsule")[0].value;
+    redstars.component[9].valueString=document.getElementsByName("Vestibular Aqueduct")[0].value;
+    redstars.component[10].valueString=document.getElementsByName("Facial Nerve")[0].value;
+    redstars.component[11].valueString=document.getElementsByName("Internal Auditory Canal")[0].value;
+    redstars.component[12].valueString=document.getElementsByName("Vascular")[0].value;
+    postData(redstars,"Observation")
+}
+function postData(jsonString, type) {
+    alert("Posting!")
+    var xhttp = new XMLHttpRequest();
+    var url = fhirUrl +"/"+type;
+    xhttp.open("POST", url, false);
+    xhttp.setRequestHeader("Content-type", 'application/json+fhir');
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4) // && this.status == 201) 
+        {
+            ret = JSON.parse(this.responseText);
+            alert(this.responseText);
+        }
+    };
+    var data = JSON.stringify(jsonString);
+    xhttp.send(data);
+}
+
+  </script>
+    </body>
+
+    </html>

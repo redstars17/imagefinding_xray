@@ -1,0 +1,24 @@
+{
+    "resourceType": "Patient",
+    "id": "10328861",
+    "meta": {
+      "versionId": "1",
+      "lastUpdated": "2023-04-23T16:14:32.031+00:00",
+      "source": "#n82r41WOOHf68mOx"
+    },
+    "text": {
+      "status": "generated",
+      "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div class=\"hapiHeaderText\">蔡政珉 <b>蔡 </b></div><table class=\"hapiPropertyTable\"><tbody><tr><td>Date of birth</td><td><span>21 January 1773</span></td></tr></tbody></table></div>"
+    },
+    "name": [ {
+      "use": "official",
+      "text": "蔡政珉",
+      "family": "蔡",
+      "given": [ "蔡政珉" ]
+    } ],
+    "gender": "female",
+    "birthDate": "1773-01-21",
+    "managingOrganization": {
+      "reference": "Organization/1921071"
+    }
+  }
